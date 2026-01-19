@@ -1,10 +1,9 @@
 pipeline {
     agent any
     
-    // Add this tools block to fix "mvn: not found"
     tools {
-        // 'Maven3' must match the name configured in 
-        // Manage Jenkins -> Tools -> Maven installations
+        // This 'Maven3' name must now exactly match 
+        // the name you just saved in Global Tools
         maven 'Maven3' 
     }
 
@@ -20,7 +19,6 @@ pipeline {
             }
             post {
                 always {
-                    // Record JUnit test results for 2026 reporting
                     junit 'target/surefire-reports/*.xml'
                 }
             }
